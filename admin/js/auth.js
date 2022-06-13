@@ -12,33 +12,50 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
-
 //                                      SIGNUP / SIGNOUT
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-      const email = user.email;
-      if(user.emailVerified){
-        console.log("You are now customer, with email: " + email)
-      }else{
-        console.log("Verify email")
-      }
-  }else{
-    console.log("guest")
+      db.collection("collection").doc("main").onSnapshot(snapshot=>{
+        show(snapshot.data())
+        showNav(user)
+        calcul()
+    })
+    } else{
+      showNav(user)
+        db.collection("collection").doc("main").get().then(snapshot=>{
+            let emptyObj = Object.keys(snapshot.data())
+            emptyObj = {}
+            show(emptyObj)
+        })
   }
 });
+
+
 function signUpWithEmailPassword() {
   // [START auth_signup_password]
-  let email = document.getElementById("email").value
-  let password = document.getElementById("password").value
+  const email = loginInputs['email'].value;
+  const password = loginInputs['password'].value;
   firebase.auth().createUserWithEmailAndPassword(email, password)
   .then((userCredential) => {
-    console.log("Регистрация прошла успешна")
-      firebase.auth().currentUser.sendEmailVerification()
+    return db.collection("users").doc(userCredential.user.uid).set({
+      email: loginInputs['email'].value,
+      first_name: loginInputs['first_name'].value,
+      second_name: loginInputs['second_name'].value,
+      city: loginInputs['city'].value,
+      addres: loginInputs['addres'].value,
+      phoneNumber: loginInputs['phone_number'].value,
+      timeRegistration: new Date(),
     })
-    .catch((error) => {
-      var errorCode = error.code;
+    // firebase.auth().currentUser.sendEmailVerification()
+  }).then(()=>{
+    console.log("Регистрация прошла успешна! Подтвердите email, для этого перейдете в свой почтовый ящик email")
+  }).catch((error) => {
       var errorMessage = error.message;
-      console.log("Неверно указан логин/пароль")
+      if(errorMessage == "The email address is already in use by another account."){
+        console.log("Email уже зарегестрирован")
+      }else{
+        console.log("Введите email/пароль")
+      }
     });
   // [END auth_signup_password]
 }
@@ -48,7 +65,8 @@ function signInWithEmailPassword() {
   let password = document.getElementById("password").value
   firebase.auth().signInWithEmailAndPassword(email, password)
     .then((userCredential) => {
-      console.log(userCredential.user.emailVerified)
+      let emailVerified = userCredential.user.emailVerified != true ? "Подтвердите email":"Ваш email подтвержден"
+      console.log(emailVerified)
     })
     .catch((error) => {
       var errorCode = error.code;
@@ -59,9 +77,9 @@ function signInWithEmailPassword() {
 }
 function GoogleLogin(){
   let provider = new firebase.auth.GoogleAuthProvider()
-  console.log('Login Btn Call')
   firebase.auth().signInWithPopup(provider).then(res=>{
-    console.log(res.user)
+    let emailVerified = userCredential.user.emailVerified != true ? "Подтвердите email":"Ваш email подтвержден"
+      console.log(emailVerified)
   }).catch(e=>{
     console.log(e)
   })
@@ -86,3 +104,4 @@ function resetPassword(){
     alert("error!")
   });
 }
+//                              end SIGN

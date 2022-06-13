@@ -6,19 +6,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-
-    <input type="email" name="" id="email">
-    <input type="password" name="" id="password">
-    <button onclick="signUpWithEmailPassword()">Регистрация</button>
-    <button onclick="signInWithEmailPassword()">Вход</button>
-    <button onclick="GoogleLogin()">Войти через Google</button>
-    <button onclick="signOut()">Выход</button>
-    <button onclick="resetPassword()">Забыли пароль</button>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<body class="body1">
+    <div class="status"></div>
+    <div class="status-email"></div>
+    <div class="status-fname"></div>
+    <div class="status-sname"></div>
+    <form id="login-inputs">
+      <input style="display: none"; placeholder="Введите email" required type="email" id="email">
+      <input style="display: none"; placeholder="Введите пароль" required type="password" id="password">
+      <input style="display: none"; placeholder="*Имя" required type="text" id="first_name">
+      <input style="display: none"; placeholder="*Фамилия" required type="text" id="second_name">
+      <input style="display: none"; placeholder="Город" type="text" id="city">
+      <input style="display: none"; placeholder="Адрес" type="text" id="addres">
+      <input style="display: none"; placeholder="Номер телефона" type="text" id="phone_number">
+      <button style="display: none"; class="login" onclick="signInWithEmailPassword(); return false">Вход</button>
+    </form>
+    <button style="display: none"; class="login" onclick="signUpWithEmailPassword()">Регистрация</button>
+    <button style="display: none"; class="login" onclick="GoogleLogin()">Войти через Google</button>
+    <button style="display: none"; class="signOut" onclick="signOut()">Выход</button>
+    <button style="display: none"; class="login" onclick="resetPassword()">Забыли пароль</button>
+    <div class="goods"></div>
+    <div style="display: none;" class="calculator">
+      <form id="kalkylator">
+      <p>1. Вид материала</p>
+      <select onchange="calcul()" id="select_vid_material">
+      <optgroup label="Стекло">
+        <option selected value="600">Стекло 2мм</option>
+        <option value="300">Стекло 3мм</option>
+        <option value="400">Стекло 4мм</option>
+      </optgroup>
+      </select>
+      <p>2. Форма изделия</p>
+        <label>
+          <img src="../1.png" alt="">
+          <input onclick="calcul()" checked name="radio1" type="radio" value="0" id="r1">
+        </label>
+        <label>
+          <img src="../2.png" alt="">
+          <input onclick="calcul()" name="radio1" type="radio" value="200" id="r2">
+        </label>
+        <label>
+          <img src="../3.png" alt="">
+          <input onclick="calcul()" name="radio1" type="radio" value="300" id="r3">
+        </label>
+      <p>3. Размеры</p>
+        Ширина:
+        <input id="height" value="1" type="number" oninput="calcul()"> м
+        Высота:
+        <input id="width" value="1" type="number" oninput="calcul()"> м
+        <input oninput="calcul()" type="number" id="kol-vo" value="1"> шт
+        </form>
+      <div id="suma">Сумма:</div>
+    </div>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-<script src="auth.js"></script>
-<script src="script.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>
