@@ -65,30 +65,15 @@ $(document).ready(function(){
   });
 });
 
-
 $(function(){
   $('.button').click(function(){
-      $('.modal').toggleClass('none');
-  });
-});
-
-
-$(function(){
-  $('.button_x').click(function(){
-      $('.modal').toggleClass('none');
-  });
-});
-
-$(function(){
-  $('.button_2_1').click(function(){
-      $('.nav_ul_2').toggleClass('none_2');
-      $('.phone-button').toggleClass('none');
+      $('.nav_ul_2').toggleClass('none');
   });
 });
 
 $(function(){
   $('.nav_ul_a').click(function(){
-      $('.nav_ul_2').toggleClass('none_2');
+      $('.nav_ul_2').toggleClass('none');
   });
 });
 
