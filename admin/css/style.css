@@ -39,7 +39,9 @@ button:hover{
     .modal_window{
         max-width: 280px;
     }
-    
+    .hide i{
+        font-size: 10px;
+    }
     
 }
 
@@ -118,13 +120,26 @@ button:hover{
     justify-content: center;
 }
 .password input{
-    width: 90%;
+    width: 80%;
     height: 45px;
     padding-left: 10px;
     border: 1px solid rgb(235, 235, 235);
-    border-radius: 0 3px 3px 0;
+    border-radius: 0 0 0 0;
     border-left: none;
 }
+.hide{
+    width: 10%;
+    height: 45px;
+    border: 1px solid rgb(235, 235, 235);
+    border-left: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 3px 3px 0;
+    cursor: pointer;
+    color: rgb(149, 149, 149);
+}
+
 .icon2{
     width: 10%;
     height: 45px;
