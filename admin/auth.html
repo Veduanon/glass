@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
@@ -17,31 +20,30 @@
                 </div>
                 <div class="sections">
                     <div class="auth on">
-                      <form id="login-admin">
                         <div class="email">
                             <div class="icon1">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <input placeholder="E-mail" required type="email" id="login-email">
+                            <input type="email" placeholder="E-mail">
                         </div>
                         <div class="password">
                             <div class="icon2">
                                 <i class="fas fa-key"></i>
                             </div>
-                            <input type="password" placeholder="Пароль" required id="login-password">
+                            <input type="password" placeholder="Пароль">
+                            <div class="hide">
+                                <i class="fas fa-eye"></i>
+                            </div>
                         </div>
                         <div class="remember">
                             <input type="checkbox">
                             <p>Запомнить меня</p>
                         </div>
                         <div class="sign">
-                            <button onclick="signInWithEmailPassword(); return false">Войти</button>
+                            <button>Войти</button>
                         </div>
-                        </form>
-                        <a href="#" class="resetpass"><p>Забыли пароль?</p></a>
-                    </div>
+                      </div>
                     <div class="registration off">
-                      <form id="registration-admin">
                         <div class="nickname">
                             <div class="icon0">
                                 <i class="fas fa-user"></i>
@@ -52,22 +54,24 @@
                             <div class="icon1">
                                 <i class="fas fa-envelope"></i>
                             </div>
-                            <input id="reg-email" type="email" placeholder="E-mail">
+                            <input type="email" placeholder="E-mail">
                         </div>
                         <div class="password">
                             <div class="icon2">
                                 <i class="fas fa-key"></i>
                             </div>
-                            <input id="reg-password" type="password" placeholder="Пароль">
+                            <input type="password" placeholder="Пароль">
+                            <div class="hide">
+                                <i class="fas fa-eye"></i>
+                            </div>
                         </div>
                         <div class="reg">
-                            <button onclick="signUpWithEmailPassword(); return false">Зарегестрироваться</button>
+                            <button>Зарегестрироваться</button>
                         </div>
-                        </form>
                     </div>
                 </div>
             </div>
-            
+            <a href="#" class="resetpass on"><p>Забыли пароль?</p></a>
         </div>
         <div class="mod off">
             <div class="modal_window off">
@@ -79,22 +83,17 @@
                         <div class="icon3">
                             <i class="fas fa-envelope"></i>
                         </div>
-                        <input id="email-reset-password" type="email" placeholder="Введите свой E-mail">
+                        <input type="email" placeholder="Введите свой E-mail">
                     </div>
                     <div class="resbutton">
-                        <button onclick="resetPassword()">Сохранить</button>
+                        <button>Сохранить</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script src="https://kit.fontawesome.com/8cb796bd7d.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/index.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="js/reg.js"></script>
 </body>
 </html>
