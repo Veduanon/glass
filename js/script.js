@@ -6,6 +6,7 @@ $('a[href*="#"]').click(function() {
     return false;
 });
 
+
 $(document).ready(function(){
     $('.slider').slick({
         infinite: true,
@@ -70,80 +71,27 @@ $(function(){
       $('.nav_ul_2').toggleClass('none');
   });
 });
-
 $(function(){
   $('.nav_ul_a').click(function(){
       $('.nav_ul_2').toggleClass('none');
   });
 });
-
-$(window).on('load', function() {
-  $preloader = $('.preloader'),
-  $loader = $preloader.find('.preloader');
-  $loader.fadeOut();
-  $preloader.delay(1500).fadeOut('slow');
+$(function(){
+    $('.resetpass').click(function(){
+        $('.mod').removeClass('off');
+        $('.modal_window').removeClass('off');
+    }); 
 });
-
-// калькулятор
-var op;
-var op2;
-var result = document.querySelector('.result');
-let tab_1 = document.querySelector('#tab_1');
-    tab_2 = document.querySelector('#tab_2');
-    tab_3 = document.querySelector('#tab_3');
-    tab_4 = document.querySelector('#tab_4');
-    tab_5 = document.querySelector('#tab_5');
-    number_1 = document.querySelector('#num1');
-    number_2 = document.querySelector('#num2');
-
-// функция расчёта
-function func() {
-  // переменная для результатов
-  var result_1;
-  var result_2;
-  var final_result;
-  // получаем первое и второе число
-  var num1 = Number(document.getElementById('num1').value);
-  var num2 = Number(document.getElementById('num2').value);
-
-  switch (op) {
-    case 1500:
-      result_1 = num1 * 1500;
-      break;
-    case 1700:
-      result_1 = num1 * 1700;
-      break;
-    case 2000:
-      result_1 = num1 * 2000;
-      break;
-  };
-  
-  switch (op2) {
-    case 2000:
-      result_2 = num2 * 2000;
-      break;
-    case 2500:
-      result_2 = num2 * 2500;
-      break;
-  };
-
-  final_result = result_2 + result_1
-
-  if (isNaN(final_result)){
-    final_result = '0тг'
-  }else{
-    // final_result = result_2 + result_1;
-    // final_result.toLocaleString('DE');
-    final_result = final_result.toLocaleString('en') + 'тг';
-  }
-  
-  result.setAttribute('placeholder', final_result);
-};
-
-number_1.addEventListener('input', func);
-number_2.addEventListener('input', func);
-tab_1.addEventListener('click', func);
-tab_2.addEventListener('click', func);
-tab_3.addEventListener('click', func);
-tab_4.addEventListener('click', func);
-tab_5.addEventListener('click', func);
+$(document).keydown(function(e) {
+    if (e.keyCode === 27) {
+        e.stopPropagation();
+        $('.mod').addClass('off');
+        $('.modal_window').addClass('off');
+    }
+});
+$('.mod').click(function(e) {
+    if ($(e.target).closest('.modal_window').length == 0) {
+        $('.mod').addClass('off');
+        $('.modal_window').addClass('off');
+    }
+});	
